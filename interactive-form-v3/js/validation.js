@@ -115,6 +115,6 @@ form.addEventListener('submit', function (event) {
 
     // If all validations are true, submit the form (or perform any additional actions)
     if (isValidName && isValidEmail && isValidActivities && (paymentMethod !== 'credit-card' || isValidCC)) {
-        alert('Form submitted successfully!');
+        event.preventDefault();
     }
 });

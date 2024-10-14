@@ -96,8 +96,6 @@ const form = document.querySelector('form');
 
 // Add an event listener for the submit event
 form.addEventListener('submit', function (event) {
-    // Prevent the default form submission
-    event.preventDefault();
 
     // Validate all fields and sections
     const isValidName = validateName();

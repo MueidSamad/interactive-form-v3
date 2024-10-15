@@ -96,22 +96,24 @@ const form = document.querySelector('form');
 
 // Add an event listener for the submit event
 form.addEventListener('submit', function (event) {
-
     // Validate all fields and sections
     const isValidName = validateName();
     const isValidEmail = validateEmail();
     const isValidActivities = validateActivities();
-
     // Check the payment method before validating credit card
     const paymentMethod = document.getElementById('payment').value;
     let isValidCC = true;
-    if (paymentMethod === 'credit-card') {
-        isValidCC = validateCreditCard();
-        validateZip();
-        validateCVV();
+    if (paymentMethod === 'credit-card' && validateCreditCard() && validateZip() && validateCVV()) {
+        return true;
+    } else {
+        event.preventDefault();
     }
 
     // If all validations are true, submit the form (or perform any additional actions)
-    if (isValidName && isValidEmail && isValidActivities && (paymentMethod !== 'credit-card' || isValidCC)) {
+    if (isValidName && isValidEmail && isValidActivities && (paymentMethod !== 'credit-card' || (isValvalidateCreditCard() && validateZip() && validateCVV()))) {
+        return true;
+    } else {
+        event.preventDefault();
     }
+
 });
